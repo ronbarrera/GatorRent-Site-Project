@@ -20,12 +20,10 @@ class Model
     public function getSearchOptions()
     {
         $options = [
-            'apartment_id',
-            'lessor_id',
-            'street_address',
-            'zipcode',
-            'price',
-            'rooms'
+            "street_address" => "Street Address" ,
+            "zipcode" => "Zip Code",
+            "price" => "Max Price",
+            "rooms" => "Rooms"
         ];
 
         return $options;
