@@ -12,6 +12,7 @@
 
         <!-- Our Custom CSS -->
         <link href="<?php echo URL; ?>css/style.css" rel="stylesheet">
+        <link href="<?php echo URL; ?>css/navbarstyle.css" rel="stylesheet">
 
         <!-- Bootstrap -->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
