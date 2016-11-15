@@ -51,12 +51,13 @@
                                     <input class="form-control" id="zipCodeInput" type="number" value="">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Description:</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="7" id="description"></textarea>
+                                </div>
+                            </div>
                         </form>
-                        <hr>
-                        <h3>Description</h3>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="7" id="description"></textarea>
-                        </div>
                     </div>
                     <div class="col-sm-5 input-group">
                         <img src="" class="img-circle" alt="upload image" width="304" height="236">
@@ -64,8 +65,9 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <button type="button" class="btn btn-warning">Remove my property from GatorRent</button>
-            <button type="button" class="btn btn-success">Display my property on GatorRent</button>
+            <button type="button" class="btn btn-primary">Display my property on GatorRent</button>
         </div>
     </div>
 </body>
