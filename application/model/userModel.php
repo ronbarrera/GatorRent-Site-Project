@@ -39,24 +39,25 @@ class UserModel {
         $query->execute($parameters);
     }
 
-    public function login($username, $password) {
-        $sql = "SELECT * FROM Renters WHERE username = :username AND password = :password UNION SELECT * FROM Lessors WHERE username = :username AND password = :password;";
+    public function login($email, $password) {
+        $sql = "SELECT email FROM Renters WHERE email = :email AND password = :password UNION SELECT email FROM Lessors WHERE email = :email AND password = :password;";
         $query = $this->db->prepare($sql);
 
         $password = hash('sha256', $password);
 
-        $query->bind_param(':username', $username);
-        $query->bind_param(':password', $password);
+        $parameters = array();
+        $parameters[':email'] = $email;
+        $parameters[':password'] = $password;
 
-        $query->execute();
+        $query->execute($parameters);
         $result = $query->fetchAll();
         print_r($result);
         //$value = $result == 1;
         //print($value);
-        // checks if username and password are the same
+        // checks if email and password are the same
         if (!$result) {
             // return false, lets view output error message
-            echo "Error, username or password does not match";
+            echo "Error, email or password does not match";
         } else {
             // return true
             echo "Success!";

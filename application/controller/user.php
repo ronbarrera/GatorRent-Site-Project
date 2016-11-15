@@ -8,12 +8,12 @@
 			require APP . 'view/_templates/footer.php';
 		}
 
-		public function authenticateLogin()
+		public function login()
 		{
-			$username = $_POST['username'];
+			$email = $_POST['email'];
 			$password = $_POST['password'];
 
-			$this->userModel->login($username, $password);
+			$this->userModel->login($email, $password);
 		}
 
 		public function register()
