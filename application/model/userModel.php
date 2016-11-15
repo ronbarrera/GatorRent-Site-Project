@@ -10,23 +10,43 @@ class UserModel {
         }
     }
 
-    public function register($username, $password, $email) {
-        $sql = "INSERT INTO user (username, password, email) VALUES (:username, :password, :email)";
+    public function register($user_type, $first_name, $last_name, $email, $password, $renter_id) {
+        $sql = "INSERT INTO ";
+        if ($user_type = 'Renter') {
+            $sql .= 'Renters (renter_id, ';
+        } else if ($user_type = 'Lessor') {
+            $sql .= 'Lessors (';
+        }
+        $sql .= "first_name, last_name, email, password) VALUES (";
+        if ($user_type = 'Renter') {
+            $sql .= ':renter_id, ';
+        }
+        $sql .= ":first_name, :last_name, :email, :password)";
+
         $query = $this->db->prepare($sql);
 
-        $query->bind_param(':username', $username);
-        $query->bind_param(':password', hash('sha256', $password));
-        $query->bind - param(':email', $email);
+        $password = hash('sha256', $password);
 
-        $query->execute();
+        $parameters = array();
+        if ($user_type = 'Renter') {
+            $parameters[':renter_id'] = $renter_id;
+        }
+        $parameters[':first_name'] = $first_name;
+        $parameters[':last_name'] = $last_name;
+        $parameters[':email'] = $email;
+        $parameters[':password'] = $password;
+
+        $query->execute($parameters);
     }
 
     public function login($username, $password) {
-        $sql = "SELECT * FROM user WHERE username=:username AND password=:password ;";
+        $sql = "SELECT * FROM Renters WHERE username = :username AND password = :password UNION SELECT * FROM Lessors WHERE username = :username AND password = :password;";
         $query = $this->db->prepare($sql);
 
-        $query->bindParam(':username', $username);
-        $query->bindParam(':password', hash('sha256', $password));
+        $password = hash('sha256', $password);
+
+        $query->bind_param(':username', $username);
+        $query->bind_param(':password', $password);
 
         $query->execute();
         $result = $query->fetchAll();
