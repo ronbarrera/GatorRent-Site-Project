@@ -12,7 +12,7 @@
                     <div class="form-group">
                         <label for="user_type">Identify yourself as:</label>
                         <select class="form-control" id="user_type" name="user_type">
-                            <option value="Renter">Renter</option>
+                            <option value="Renter" selected>Renter</option>
                             <option value="Lessor">Lessor</option>
                         </select>
                     </div>
