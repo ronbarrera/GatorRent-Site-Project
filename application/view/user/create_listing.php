@@ -23,19 +23,19 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Price:</label>
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <input class="form-control" id="priceInput" type="number" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Rooms:</label>
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <input class="form-control" id="roomsInput" type="number" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">SquareFt:</label>
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <input class="form-control" id="squareFtInput" type="number" value="">
                                 </div>
                             </div>
@@ -46,8 +46,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Zip Code:</label>
-                                <div class="col-sm-3">
+                                <label class="col-sm-2 control-label">ZipCode:</label>
+                                <div class="col-sm-4">
                                     <input class="form-control" id="zipCodeInput" type="number" value="">
                                 </div>
                             </div>
