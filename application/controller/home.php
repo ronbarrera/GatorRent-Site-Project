@@ -71,4 +71,13 @@ class Home extends Controller
         require APP . 'view/home/results.php';
         require APP . 'view/_templates/footer.php';
     }
+    
+     public function singleview()
+    {
+        $apartment = $this->model->getSingleApartmentInfo($_POST['singleapartmentid']);
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/home/singleview.php';
+        require APP . 'view/_templates/footer.php';
+        
+    }
 }
