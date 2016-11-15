@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS `f16g13`.`Renters`(
    `renter_id` int(9),
+   `password`, varchar(64) COLLATE utf8_unicode_ci NOT NULL,
    `first_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
    `last_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
    `email` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
@@ -11,6 +12,7 @@ CREATE TABLE IF NOT EXISTS `f16g13`.`Renters`(
 
 CREATE TABLE IF NOT EXISTS `f16g13`.`Lessors`(
    `lessor_id` int(9) AUTO_INCREMENT,
+   `password`, varchar(64) COLLATE utf8_unicode_ci NOT NULL,
    `first_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
    `last_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
    `email` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
