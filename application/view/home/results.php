@@ -31,19 +31,21 @@
                                     <a href="#" target="_parent"></a>
 
                                     <h4 class="media-heading">
-                                        <a href="#" target="_parent">$<?php if (isset($result->price)) {echo htmlspecialchars($result->price, ENT_QUOTES, "UTF-8");} ?> <small class="pull-right"><?php if (isset($result->zipcode)) {echo htmlspecialchars($result->zipcode, ENT_QUOTES, "UTF-8");} ?></small></a></h4>
+                                        <a href="#" target="_parent">$<?php if (isset($result->price)) {echo htmlspecialchars($result->price, ENT_QUOTES, "UTF-8");} ?> <small class="pull-right">Apartment #<?php if (isset($result->apartment_id)) {echo htmlspecialchars($result->apartment_id, ENT_QUOTES, "UTF-8");} ?></small></a></h4>
 
 
                                     <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-                                        <li>SqFt</li>
+                                        <li><?php if (isset($result->rooms)) {echo htmlspecialchars($result->rooms, ENT_QUOTES, "UTF-8");} ?> Rooms</li>
                                         <li style="list-style: none">|</li>
-                                        <li>Baths</li>
-                                        <li style="list-style: none">|</li>
-                                        <li><?php if (isset($result->rooms)) {echo htmlspecialchars($result->rooms, ENT_QUOTES, "UTF-8");} ?> Baths</li>
+                                        <li><?php if (isset($result->zipcode)) {echo htmlspecialchars($result->zipcode, ENT_QUOTES, "UTF-8");} ?></li>
                                     </ul>
-                                    
+                                        
+                                    <form action="<?php echo URL; ?>home/singleview" method="POST" target="_blank">
+                                    <input type="hidden" name="singleapartmentid" value="<?php echo $result->apartment_id ?>"/>
                                     <button type="submit" class="btn btn-primary btn-lg">View</button>
-                                    <button type="submit" class="btn btn-primary btn-lg">Contact</button>
+                                    <button type="button" class="btn btn-primary btn-lg">Contact</button>
+                                    </form>
+                                    
                                     
                                 </div>
                             </div>
