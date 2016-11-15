@@ -74,6 +74,7 @@ class Home extends Controller
     
      public function singleview()
     {
+        $search_options = $this->model->getSearchOptions();
         $apartment = $this->model->getSingleApartmentInfo($_POST['singleapartmentid']);
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/singleview.php';
