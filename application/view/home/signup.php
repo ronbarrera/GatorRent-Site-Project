@@ -9,6 +9,13 @@
                     <div id="legend">
                         <legend class="">Create Account</legend>
                     </div>
+                    <div class="form-group">
+                        <label for="sel1">Identify yourself as:</label>
+                        <select class="form-control" id="sel1">
+                            <option>Renter</option>
+                            <option>Lessor</option>
+                        </select>
+                    </div>
                     <div class="control-group">
                         <!-- Username -->
                         <label class="control-label"  for="username">Name</label>
