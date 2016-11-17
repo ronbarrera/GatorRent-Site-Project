@@ -68,7 +68,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="<?php echo(($location == 'home') ? 'active' : '') ?>" ><a href="<?php echo URL; ?>">Home</a></li>
                         <li class="<?php echo(($location == 'aboutus') ? 'active' : '') ?>"><a href="<?php echo URL; ?>home/aboutus">About Us</a></li>
-                        <li class="<?php echo(($location == 'signup') ? 'active' : '') ?>"><a href="<?php echo URL; ?>home/signup"">Sign Up</a></li>
+                        <li class="<?php echo(($location == 'create_listing') ? 'active' : '') ?>"><a href="<?php echo URL; ?>user/create_listing">Create Listing</a></li>
+                        <li class="<?php echo(($location == 'signup') ? 'active' : '') ?>"><a href="<?php echo URL; ?>home/signup">Sign Up</a></li>
                         <li class="dropdown" id="menuLogin">
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login<span class="caret"></span></a>
                             <ul class="dropdown-menu" id="dropdown-login">
