@@ -15,18 +15,18 @@ class Home extends Controller
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
      */
-    
+
     /**
      *
      * $location helps to active the current location in the navbar.
      */
     private $location = "";
-    
-       
+
+
     public function getCurrentLocation(){
         return $this->location;
     }
-    
+
     public function index()
     {
         $search_options = $this->model->getSearchOptions();
@@ -35,7 +35,7 @@ class Home extends Controller
         require APP . 'view/home/index.php';
         require APP . 'view/_templates/footer.php';
     }
-    
+
     public function aboutus()
     {
         $search_options = $this->model->getSearchOptions();
@@ -69,7 +69,7 @@ class Home extends Controller
     public function search()
     {
         $search_options = $this->model->getSearchOptions();
-        
+
         if (isset($_POST['submit_search'])) {
             $results = $this->model->search($_POST['search_option'], $_POST['search_query']);
         } else {
@@ -78,6 +78,22 @@ class Home extends Controller
 
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/results.php';
+        require APP . 'view/_templates/footer.php';
+    }
+
+    public function viewlisting()
+    {
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/home/view_listing.php';
+        require APP . 'view/_templates/footer.php';
+    }
+
+    public function singleview()
+    {
+        $search_options = $this->model->getSearchOptions();
+        $apartment = $this->model->getSingleApartmentInfo($_POST['singleapartmentid']);
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/home/singleview.php';
         require APP . 'view/_templates/footer.php';
     }
 }
