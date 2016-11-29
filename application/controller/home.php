@@ -62,7 +62,11 @@ class Home extends Controller
         $search_options = $this->model->getSearchOptions();
 
         if (isset($_POST['submit_search'])) {
-            $results = $this->model->search($_POST['search_option'], $_POST['search_query']);
+            try {
+                $results = $this->model->search($_POST['search_option'], $_POST['search_query']);
+            } catch (Exception $err) {
+                $results = $err;
+            }
         } else {
             $results = $this->model->search();
         }
