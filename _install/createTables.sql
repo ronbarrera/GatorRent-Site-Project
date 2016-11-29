@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `f16g13`.`Lessors`(
 CREATE TABLE IF NOT EXISTS `f16g13`.`Apartments`(
    `apartment_id` int(9) AUTO_INCREMENT,
    `lessor_id` int (9),
+   `title` varchar(60) COLLATE utf8_unicode_ci,
    `street_address` varchar(100) COLLATE utf8_unicode_ci,
    `zipcode`int (5),
    `price`int (5),
