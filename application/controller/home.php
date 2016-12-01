@@ -87,4 +87,31 @@ class Home extends Controller
         require APP . 'view/home/singleview.php';
         require APP . 'view/_templates/footer.php';
     }
+    
+    public function conditionOfUse()
+    {
+        $search_options = $this->model->getSearchOptions();
+        $location = "aboutus";
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/home/condition_of_use.php';
+        require APP . 'view/_templates/footer.php';
+    }
+    
+    public function privacyNotice()
+    {
+        $search_options = $this->model->getSearchOptions();
+        $location = "aboutus";
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/home/privacy_notice.php';
+        require APP . 'view/_templates/footer.php';
+    }
+    
+    public function contactUs()
+    {
+        $search_options = $this->model->getSearchOptions();
+        $location = "aboutus";
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/home/contact_us.php';
+        require APP . 'view/_templates/footer.php';
+    }
 }

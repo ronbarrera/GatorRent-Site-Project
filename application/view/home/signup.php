@@ -65,14 +65,14 @@
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" name="toscomply">
-                            I agree to GatorRent's Conditions of Use and Privacy Notice.
+                            I agree to GatorRent's <a href="<?php echo URL; ?>home/conditions_of_use" target="_blank">Conditions of Use</a> and <a href="<?php echo URL; ?>home/privacy_notice" target="_blank">Privacy Notice</a>.
                         </label>
                     </div>
 
                     <div class="control-group">
                         <!-- Button -->
                         <div class="controls">
-                            <button class="btn btn-success">Create your GatorRent account</button>
+                            <button class="btn btn-primary">Create your GatorRent account</button>
                         </div>
                     </div>
                 </fieldset>
