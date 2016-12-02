@@ -60,7 +60,6 @@
                         </form>
                     </div>
                     <div class="col-sm-5 input-group">
-                        <img src="" class="img-circle" alt="upload image" width="304" height="236">
                         <input id="input-dim-1" name="inputdim1[]" type="file" multiple class="file-loading" accept="image/*">
                     </div>
                 </div>

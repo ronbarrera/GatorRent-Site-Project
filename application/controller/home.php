@@ -44,7 +44,7 @@ class Home extends Controller
         require APP . 'view/home/aboutus.php';
         require APP . 'view/_templates/footer.php';
     }
-
+    
     public function signup()
     {
         $search_options = $this->model->getSearchOptions();
