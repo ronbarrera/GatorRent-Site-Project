@@ -10,13 +10,13 @@
                     <div class="contact-us-content">
                         <li>8am-8pm PT Weekdays</li>
                         <br>
-                        <li>10am-5pm PT Weekends</li>
+                        <li>9am-5pm PT Weekends</li>
                         <br>
-                        <li>11am-4pm PT US Holidays</li>
+                        <li>10am-4pm PT US Holidays</li>
                         <br>
                         <li>Email: contactus@gatorrent.com</li>
                         <br>
-                        <li>Phont: +1 800-gatorrent</li>
+                        <li>Phone: +1 800-gatorrent</li>
                     </div>
                 </div>
             </div>
