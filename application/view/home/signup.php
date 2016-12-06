@@ -66,7 +66,7 @@
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" name="toscomply">
-                            I agree to GatorRent's <a href="<?php echo URL; ?>home/conditions_of_use" target="_blank">Conditions of Use</a> and <a href="<?php echo URL; ?>home/privacy_notice" target="_blank">Privacy Notice</a>.
+                            I agree to GatorRent's <a href="<?php echo URL; ?>home/conditionsofuse" target="_blank">Conditions of Use</a> and <a href="<?php echo URL; ?>home/privacynotice" target="_blank">Privacy Notice</a>.
                         </label>
                     </div>
                     <br>
