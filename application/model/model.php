@@ -82,9 +82,6 @@ class Model
 
 
     /**
-     * Get all songs from database
-=======
-     *
      * @return all apartment's column by giving apartment_id
      */
      public function getSingleApartmentInfo($apartment_id)
