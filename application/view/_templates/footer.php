@@ -1,8 +1,8 @@
 <div class="panel-footer text-center">
     <ul>
-        <a href="<?php echo URL; ?>home/conditionsOfUse" target="_blank">Conditions of Use</a>
-        <a href="<?php echo URL; ?>home/privacyNotice" target="_blank">Privacy Notice</a>
-        <a href="<?php echo URL; ?>home/contactUs" target="_blank">Contact Us</a>
+        <a href="<?php echo URL; ?>home/conditionsofuse" target="_blank">Conditions of Use</a>
+        <a href="<?php echo URL; ?>home/privacynotice" target="_blank">Privacy Notice</a>
+        <a href="<?php echo URL; ?>home/contactus" target="_blank">Contact Us</a>
         <div class="footer">
         Find <a href="https://github.com/panique/mini">MINI on GitHub</a>.
         If you like the project, support it by <a href="http://tracking.rackspace.com/SH1ES">using Rackspace</a> as your hoster [affiliate link].

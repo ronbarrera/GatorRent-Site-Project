@@ -88,10 +88,10 @@ class Home extends Controller
         require APP . 'view/_templates/footer.php';
     }
     
-    public function conditionofuse()
+    public function conditionsofuse()
     {
         $search_options = $this->model->getSearchOptions();
-        $location = "conditionofuse";
+        $location = "conditionsofuse";
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/condition_of_use.php';
         require APP . 'view/_templates/footer.php';
