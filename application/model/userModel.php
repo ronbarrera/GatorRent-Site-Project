@@ -60,8 +60,7 @@ class UserModel {
             exit();
         } else {
             // Creates a session to store the users ID, and make them always log in upon visiting the site 
-            $_SESSION['Renters'] = $result->Renters;
-            $_SESSION['Lessors'] = $result->Lessors;
+            $_SESSION['accountType'] = $result->Renters;
             $_SESSION['email'] = $result->email;
             $_SESSION['loggedIn'] = true;
             // start redirect to page user was at previously
