@@ -41,8 +41,8 @@ class UserModel {
         $query->execute($parameters);
     }
 
-    public function login($username, $password) {
-        $sql = "SELECT * FROM user WHERE username=:username AND password=:password ;";
+    public function login($email, $password) {
+        $sql = "SELECT * FROM user WHERE email=:email AND password=:password ;";
         $query = $this->db->prepare($sql);
         $query->bindParam(':email', $email);
         // hash the password using sha256 and compares with the hashed pw in db
@@ -60,7 +60,8 @@ class UserModel {
             exit();
         } else {
             // Creates a session to store the users ID, and make them always log in upon visiting the site 
-            $_SESSION['userId'] = $result->id;
+            $_SESSION['Renters'] = $result->Renters;
+            $_SESSION['Lessors'] = $result->Lessors;
             $_SESSION['email'] = $result->email;
             $_SESSION['loggedIn'] = true;
             // start redirect to page user was at previously
