@@ -10,7 +10,7 @@ class UserModel {
         }
     }
 
-    public function register($user_type, $first_name, $last_name, $email, $password, $renter_id=NULL) {
+    public function register($user_type, $first_name, $last_name, $email, $password, $renter_id = NULL) {
         $sql = "INSERT INTO ";
         if ($user_type == 'Renter') {
             $sql .= 'Renters (renter_id, ';
@@ -41,29 +41,48 @@ class UserModel {
         $query->execute($parameters);
     }
 
-    public function login($email, $password) {
-        $sql = "SELECT email FROM Renters WHERE email = :email AND password = :password UNION SELECT email FROM Lessors WHERE email = :email AND password = :password;";
+    public function login($username, $password) {
+        $sql = "SELECT * FROM user WHERE username=:username AND password=:password ;";
         $query = $this->db->prepare($sql);
+        $query->bindParam(':email', $email);
+        // hash the password using sha256 and compares with the hashed pw in db
+        $password1 = hash('sha256', $password);
+        $query->bindParam(':password', $password1);
+        $query->execute();
+        $result = $query->fetch();
 
-        $password = hash('sha256', $password);
-
-        $parameters = array();
-        $parameters[':email'] = $email;
-        $parameters[':password'] = $password;
-
-        $query->execute($parameters);
-        $result = $query->fetchAll();
-        print_r($result);
-        //$value = $result == 1;
-        //print($value);
-        // checks if email and password are the same
+        //If the username's and password match, result will have an item.
+        //If result is blank, then no match is found.
         if (!$result) {
-            // return false, lets view output error message
-            echo "Error, email or password does not match";
+            //If login fails, we redirect to home and exit() so php does not keep executing.
+            $_SESSION['loggedIn'] = false;
+            header("Location:" . URL . "home/index", true, 401);
+            exit();
         } else {
-            // return true
-            echo "Success!";
+            // Creates a session to store the users ID, and make them always log in upon visiting the site 
+            $_SESSION['userId'] = $result->id;
+            $_SESSION['email'] = $result->email;
+            $_SESSION['loggedIn'] = true;
+            // start redirect to page user was at previously
+            echo "<meta http-equiv=\"refresh\" content=\"5;url=" . $_SERVER['HTTP_REFERER'] . "\"/>";
+            echo "Successfully logged in!";
         }
+    }
+
+    public function logout() {
+        // code obtained from : http://php.net/manual/en/function.session-destroy.php
+        // Unset all of the session variables.
+        $_SESSION = array();
+
+        // If it's desired to kill the session, also delete the session cookie.
+        // Note: This will destroy the session, and not just the session data!
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
+        }
+
+        // Destroy the session.
+        session_destroy();
     }
 
 }
