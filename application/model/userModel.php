@@ -42,15 +42,28 @@ class UserModel {
     }
 
     public function login($email, $password) {
-        $sql = "SELECT * FROM user WHERE email=:email AND password=:password ;";
-        $query = $this->db->prepare($sql);
-        $query->bindParam(':email', $email);
-        // hash the password using sha256 and compares with the hashed pw in db
-        $password1 = hash('sha256', $password);
-        $query->bindParam(':password', $password1);
-        $query->execute();
-        $result = $query->fetch();
-
+        $Lessors = "SELECT * FROM Lessors WHERE email=:email AND password=:password ;";
+        $Renters = "SELECT * FROM Renters WHERE email=:email AND password=:password ;";
+        for ($i = 0; $i < 2; $i++) {
+            if ($i == 0) {
+                $sql = $Lessors;
+            } else {
+                $sql = $Renters;
+            }
+            $query = $this->db->prepare($sql);
+            $query->bindParam(':email', $email);
+            // hash the password using sha256 and compares with the hashed pw in db
+            $password1 = hash('sha256', $password);
+            $query->bindParam(':password', $password1);
+            $query->execute();
+            $result = $query->fetch();
+            //if accountType = 0 then it is Lessors
+            //if accountType = 1 then it is Renters
+            if ($result) {
+                $accountType = $i;
+                break;
+            }
+        }
         //If the username's and password match, result will have an item.
         //If result is blank, then no match is found.
         if (!$result) {
@@ -60,7 +73,7 @@ class UserModel {
             exit();
         } else {
             // Creates a session to store the users ID, and make them always log in upon visiting the site 
-            $_SESSION['accountType'] = $result->Renters;
+            $_SESSION['accountType'] = $accountType;
             $_SESSION['email'] = $result->email;
             $_SESSION['loggedIn'] = true;
             // start redirect to page user was at previously

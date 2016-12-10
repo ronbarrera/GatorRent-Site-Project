@@ -2,8 +2,8 @@
 
 session_start();
 
-class Controller
-{
+class Controller {
+
     /**
      * @var null Database Connection
      */
@@ -18,8 +18,7 @@ class Controller
     /**
      * Whenever controller is created, open a database connection too and load "the model".
      */
-    function __construct()
-    {
+    function __construct() {
         $this->openDatabaseConnection();
         $this->loadModel();
     }
@@ -27,8 +26,7 @@ class Controller
     /**
      * Open the database connection with the credentials from application/config/config.php
      */
-    private function openDatabaseConnection()
-    {
+    private function openDatabaseConnection() {
         // set the (optional) options of the PDO connection. in this case, we set the fetch mode to
         // "objects", which means all results will be objects, like this: $result->user_name !
         // For example, fetch mode FETCH_ASSOC would return results like this: $result["user_name] !
@@ -44,12 +42,12 @@ class Controller
      * Loads the "model".
      * @return object model
      */
-    public function loadModel()
-    {
+    public function loadModel() {
         require APP . 'model/model.php';
         require APP . 'model/userModel.php';
         // create new "model" (and pass the database connection)
         $this->model = new Model($this->db);
         $this->userModel = new UserModel($this->db);
     }
+
 }
