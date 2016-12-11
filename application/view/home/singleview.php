@@ -65,23 +65,23 @@
             <div class="carousel-inner" role="listbox" style="height: 385px;">
                 <?php if (isset($apartment[0]->picture_1)) { ?>
                     <div class="item active">
-                        <img src="<?php echo 'http://sfsuswe.com/~f16g13/imgfs/' . htmlspecialchars($apartment[0]->apartment_id) . "/" . htmlspecialchars($apartment[0]->picture_1); ?>" alt="Chania">
+                        <img src="<?php echo 'http://sfsuswe.com/~f16g13/imgfs/' . htmlspecialchars($apartment[0]->apartment_id) . "/" . htmlspecialchars($apartment[0]->picture_1); ?>">
                     </div>
                 <?php } ?>
 
                 <?php if (isset($apartment[0]->picture_2)) { ?>
                     <div class="item">
-                        <img src="<?php echo 'http://sfsuswe.com/~f16g13/imgfs/' . htmlspecialchars($apartment[0]->apartment_id) . "/" . htmlspecialchars($apartment[0]->picture_2); ?>" alt="Chania">
+                        <img src="<?php echo 'http://sfsuswe.com/~f16g13/imgfs/' . htmlspecialchars($apartment[0]->apartment_id) . "/" . htmlspecialchars($apartment[0]->picture_2); ?>">
                     </div>
                 <?php } ?>
                 <?php if (isset($apartment[0]->picture_3)) { ?>
                     <div class="item">
-                        <img src="<?php echo 'http://sfsuswe.com/~f16g13/imgfs/' . htmlspecialchars($apartment[0]->apartment_id) . "/" . htmlspecialchars($apartment[0]->picture_3); ?>" alt="Chania">
+                        <img src="<?php echo 'http://sfsuswe.com/~f16g13/imgfs/' . htmlspecialchars($apartment[0]->apartment_id) . "/" . htmlspecialchars($apartment[0]->picture_3); ?>">
                     </div>
                 <?php } ?>
                 <?php if (isset($apartment[0]->picture_4)) { ?>
                     <div class="item">
-                        <img src="<?php echo 'http://sfsuswe.com/~f16g13/imgfs/' . htmlspecialchars($apartment[0]->apartment_id) . "/" . htmlspecialchars($apartment[0]->picture_4); ?>" alt="Chania">
+                        <img src="<?php echo 'http://sfsuswe.com/~f16g13/imgfs/' . htmlspecialchars($apartment[0]->apartment_id) . "/" . htmlspecialchars($apartment[0]->picture_4); ?>">
                     </div>
                 <?php } ?>
             </div>
