@@ -32,18 +32,33 @@ class Model
     /**
      * Search apartments based on search criteria
      */
-    public function search($search_option, $search_query)
+    public function search($searchOption, $searchQuery)
     {
         $sql = 'SELECT * FROM prototype';
         $parameters = array();
         $options = $this->getSearchOptions();
 
-        if ($search_option !== '' && $search_query !== '') {
-            if ($this->_validateSearch($search_option, $search_query)) {
-                $sql = $sql . ' WHERE ' . $search_option . ' LIKE :query';
-                $parameters = array(':query' => '%' . $search_query . '%');
+        if ($searchOption !== '' && $searchQuery !== '') {
+            if ($this->_validateSearch($searchOption, $searchQuery)) {
+                switch ($searchOption) {
+                    case 'street_address':
+                        $sql = $sql . ' WHERE ' . $searchOption . ' LIKE :query';
+                        $parameters = array(':query' => '%' . $searchQuery . '%');
+                        break;
+                    case 'price':
+                        $sql = $sql . ' WHERE ' . $searchOption . ' <= :query';
+                        $parameters = array(':query' => $searchQuery);
+                        break;
+                    case 'zipcode':
+                    case 'rooms':
+                        $sql = $sql . ' WHERE ' . $searchOption . ' = :query';
+                        $parameters = array(':query' => $searchQuery);
+                        break;
+                    default:
+                        // do nothing
+                }
             } else {
-                throw new Exception('Invalid '. strtolower($options[$search_option]) . '. Check your search for any errors and try again.');
+                throw new Exception('Invalid '. strtolower($options[$searchOption]) . '. Check your search for any errors and try again.');
             }
         }
         $query = $this->db->prepare($sql);
