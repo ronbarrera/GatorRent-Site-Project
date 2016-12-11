@@ -60,11 +60,11 @@ class Model
      * get the most recent posts as an array of 6.
      * no external parameters are necessary.
     */
-    
+
     public function getMostRecentPosts()
     {
        $sql = 'SELECT picture_1 FROM Apartments ORDER BY modified_date DESC LIMIT 6;';
-       $query = $this->db->prepare($sql); 
+       $query = $this->db->prepare($sql);
        $query->execute();
        return $query->fetchAll();
     }
@@ -95,16 +95,26 @@ class Model
     /**
      * Function for validating searches before querying database.
      * Street addresses should be strings; zip code, price, and rooms
-     * should be numeric
+     * should be positive integers. Zip codes should be exactly 5 numbers long.
      * @return boolean: true if valid; false if invalid
      */
-    private function _validateSearch($search_option, $search_query)
-    {
-        if ($search_option === 'street_address') {
-            return is_string($search_query);
-        } else {
-            return is_numeric($search_query);
-        }
-    }
+     private function _validateSearch($searchOption, $searchQuery)
+     {
+         switch ($searchOption) {
+             case 'street_address':
+                 return is_string($searchQuery);
+                 break;
+             case 'zipcode':
+                 return strlen($searchQuery) === 5 && ctype_digit($searchQuery) && intval($searchQuery, 10) >= 0;
+                 break;
+             case 'price':
+             case 'rooms':
+                 return ctype_digit($searchQuery) && intval($searchQuery, 10) >= 0;
+                 break;
+             default:
+                 // no matched search option - default to false
+                 return false;
+         }
+     }
 
 }

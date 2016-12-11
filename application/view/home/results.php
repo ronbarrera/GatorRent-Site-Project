@@ -3,7 +3,7 @@
     <?php if (count($results) < 1) { ?>
         <h5>No Result Found</h5>
     <?php } else if (is_a($results, 'Exception')){ ?>
-        <h5>Invalid Search</h5>
+        <h5>Invalid Input</h5>
         <span><?php echo $results->getMessage(); ?></span>
     <?php } else { ?>
 
