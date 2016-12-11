@@ -76,25 +76,13 @@ class Model
      * no external parameters are necessary.
     */
 
-    public function getMostRecentPosts()
+    public function getRecentListings()
     {
-       $sql = 'SELECT picture_1 FROM Apartments ORDER BY modified_date DESC LIMIT 6;';
+       $sql = 'SELECT * FROM Apartments ORDER BY modified_date DESC LIMIT 6;';
        $query = $this->db->prepare($sql);
        $query->execute();
        return $query->fetchAll();
     }
-
-    /**
-     * This function will get a specific picture at an index.
-     * This will get a pictuer at a specific number, taking into
-     * account that it starts at 0.
-    */
-    public function getRecentPicturePost($pictureNumber)
-    {
-      $results = getMostRecentPosts();
-      return $results[$pictureNumber - 1];
-    }
-
 
     /**
      * @return all apartment's column by giving apartment_id
