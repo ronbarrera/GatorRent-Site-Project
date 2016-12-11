@@ -8,13 +8,38 @@
     padding-bottom: 20px;
 }
 
+.mainfooter {
+  background-color: #1b1b1b;
+  background-image: -moz-linear-gradient(top, #222222, #111111);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+  background-image: -webkit-linear-gradient(top, #222222, #111111);
+  background-image: -o-linear-gradient(top, #222222, #111111);
+  background-image: linear-gradient(to bottom, #222222, #111111);
+  background-repeat: repeat-x;
+  border-color: #252525;
+  color: whitesmoke;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+  height: 50px;
+}
+
+.push {
+    height: 50px;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto;
+}
+
 .footer {
     padding: 20px;
     margin: 33px;
     text-align: right;
-    font-size: 11px;
+    font-size: 14px;
     opacity: 0.5;
 }
 .footer a {
-    color: #454545;
+    color: whitesmoke;
 }

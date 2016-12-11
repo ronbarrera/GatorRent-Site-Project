@@ -1,6 +1,9 @@
-<div class="container-fluid text-center bg-grey">
+<div class="container text-center">
     <h1>Welcome to GatorRent.</h1>
     <h4>Apartments searching and renting website for SFSU's student only</h4>
+</div>
+<hr>
+<div class="container-fluid text-center bg-grey">
     <div class="row text-center">
         <div class="col-sm-4">
             <a href="<?php echo URL; ?>home/viewlisting" class="thumbnail">
