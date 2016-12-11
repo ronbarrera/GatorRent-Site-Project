@@ -34,7 +34,7 @@ class Model
      */
     public function search($searchOption, $searchQuery)
     {
-        $sql = 'SELECT * FROM prototype';
+        $sql = 'SELECT * FROM Apartments';
         $parameters = array();
         $options = $this->getSearchOptions();
 
@@ -101,7 +101,7 @@ class Model
      */
      public function getSingleApartmentInfo($apartment_id)
     {
-        $sql = 'SELECT * FROM prototype WHERE apartment_id = '.$apartment_id;
+        $sql = 'SELECT * FROM Apartments WHERE apartment_id = '.$apartment_id;
         $query = $this->db->prepare($sql);
         $query->execute();
         return $query->fetchAll();
