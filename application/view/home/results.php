@@ -21,38 +21,38 @@
                         <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
                             <div class="media">
                                 <a class="pull-left" href="<?php echo URL; ?>home/singleview/<?php echo $result->apartment_id; ?>" target="_blank">
-                                    <img alt="image" class="img-thumbnail-listing" src="<?php if (isset($result->apartment_id) && isset($result->picture_1)) {
-                                        echo 'http://sfsuswe.com/~f16g13/imgfs/' . htmlspecialchars($result->apartment_id) . "/" . htmlspecialchars($result->picture_1);
-                                        } else {
-                                        echo '';
-                                        } ?>" width="180px" height="135px"></a>
+                                    <img alt="image" class="img-thumbnail-listing" src="<?php if (isset($result->apartment_id) && isset($result->picture_1)) {echo 'http://sfsuswe.com/~f16g13/imgfs/' . htmlspecialchars($result->apartment_id) . "/" . htmlspecialchars($result->picture_1);} else {echo '';} ?>" width="180px" height="135px">
+                                </a>
                                 <div class="clearfix visible-sm"></div>
                                 <div class="media-body fnt-smaller">
-                                    <a href="<?php echo URL; ?>home/singleview/<?php echo $result->apartment_id; ?>" target="_blank"><h4 class="media-heading"><span class="media-title"><?php if (isset($result->title)) {
-                                            echo htmlspecialchars($result->title, ENT_QUOTES, "UTF-8");
-                                        } ?></span></h4></a>
-                                    <h4 class="media-heading" style="color:#03a1d1;">$<?php if (isset($result->price)) {
-                                            echo htmlspecialchars($result->price, ENT_QUOTES, "UTF-8");
-                                        } ?> <small class="pull-right" style="color: black;"><?php if (isset($result->apartment_id)) {
-                                            echo htmlspecialchars($result->zipcode, ENT_QUOTES, "UTF-8");
-                                        } ?></small></h4>
+                                    <a href="<?php echo URL; ?>home/singleview/<?php echo $result->apartment_id; ?>" target="_blank">
+                                        <h4 class="media-heading">
+                                            <span class="media-title">
+                                                <?php if (isset($result->title)) {echo htmlspecialchars($result->title, ENT_QUOTES, "UTF-8");} ?>
+                                            </span>
+                                        </h4>
+                                    </a>
+                                    <h4 class="media-heading" style="color:#03a1d1;">
+                                        $<?php if (isset($result->price)) {echo htmlspecialchars($result->price, ENT_QUOTES, "UTF-8");}?> 
+                                        <small class="pull-right" style="color: black;">
+                                            <?php if (isset($result->apartment_id)) {echo htmlspecialchars($result->zipcode, ENT_QUOTES, "UTF-8");}?>
+                                        </small>
+                                    </h4>
                                     <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-                                        <li><?php if (isset($result->rooms)) {
-                                                echo htmlspecialchars($result->rooms, ENT_QUOTES, "UTF-8");
-                                            } ?> Rooms</li>
+                                        <li><?php if (isset($result->rooms)) {echo htmlspecialchars($result->rooms, ENT_QUOTES, "UTF-8");}?> Rooms</li>
                                         <li style="list-style: none">|</li>
-                                        <li><?php if (isset($result->baths)) {
-                                                echo htmlspecialchars($result->baths, ENT_QUOTES, "UTF-8");
-                                            } ?> Baths</li>
+                                        <li><?php if (isset($result->baths)) {echo htmlspecialchars($result->baths, ENT_QUOTES, "UTF-8");}?> Baths</li>
                                     </ul>
-                                    <a href="<?php echo URL; ?>home/singleview/<?php echo $result->apartment_id; ?>" target="_blank"><button class="btn btn-primary btn-lg">View</button></a>
+                                    <a href="<?php echo URL; ?>home/singleview/<?php echo $result->apartment_id; ?>" target="_blank">
+                                        <button class="btn btn-primary btn-lg">View</button>
+                                    </a>
                                     <button type="button" class="btn btn-primary btn-lg">Contact</button>
                                 </div>
                             </div>
                         </div><!-- End Listing-->
                     </div>
-    <?php } ?>
+                <?php } ?>
             </div><!-- End row -->
-<?php } ?>
+        <?php } ?>
     </div><!-- End container -->
 </div>
