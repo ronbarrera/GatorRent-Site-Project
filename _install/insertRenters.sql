@@ -1,6 +1,6 @@
 use 'f16g13';
 
-INSERT INTO Renters(renterId,password,firstName,lastName,email) VALUES (274923987,"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8","Harry","Potter","hpotter45@mail.sfsu.edu"),
+INSERT INTO 'Renters'(renterId,password,firstName,lastName,email) VALUES (274923987,"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8","Harry","Potter","hpotter45@mail.sfsu.edu"),
 (378173839,"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8","Mike","Smith","k123@mail.sfsu.edu"),
 (583493765,"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8","Sheldon","Cooper","scooper6@mail.sfsu.edu"),
 (911000123,"1e4ff0a62128503cff31c831e720822a7adb1e9c52f296b0d4b84d9ec51aa783","Sam","Candito","scandito@mail.sfsu.edu"),
