@@ -117,7 +117,7 @@ class Model
      {
          switch ($searchOption) {
              case 'street_address':
-                 return is_string($searchQuery);
+                 return preg_match('/[. A-Za-z0-9]/', $searchQuery);
                  break;
              case 'zipcode':
                  return strlen($searchQuery) === 5 && ctype_digit($searchQuery) && intval($searchQuery, 10) >= 0;
