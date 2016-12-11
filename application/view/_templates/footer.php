@@ -3,7 +3,7 @@
 </div>
 <div class="footer">
 </div>
-<div class="mainfooter panel-footer navbar-static-bottom text-center">
+<div class="mainfooter site-footer panel-footer navbar-static-bottom text-center">
     <ul>
         <a href="<?php echo URL; ?>home/conditionsofuse" target="_blank"><span style="color: whitesmoke;">Conditions of Use  |</a>
         <a href="<?php echo URL; ?>home/privacynotice" target="_blank"><span style="color: whitesmoke;">Privacy Notice   |</a>
