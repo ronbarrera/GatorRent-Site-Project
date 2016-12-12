@@ -83,12 +83,12 @@
                             <!-- Select photos to uploads. Max photo amount 10. Allowed file types: jpg and png. -->
                             <div class="form-group">
                                 <label class="control-label">Select Photo to Upload*</label>
-                                <input id="photo" name="photo[]" type="file" multiple class="file-loading" data-allowed-file-extensions='["jpg", "png"]'>
+                                <input id="select-photos" name="select-photos[]" type="file" multiple class="file-loading" data-allowed-file-extensions='["jpg", "png"]'>
                                 <script>
                                     $(document).on('ready', function () {
-                                        $("#photo").fileinput({
+                                        $("#select-photos").fileinput({
                                             showUpload: true,
-                                            maxFileCount: 10,
+                                            maxFileCount: 4,
                                             mainClass: "input-group-lg"
                                         });
                                     });
