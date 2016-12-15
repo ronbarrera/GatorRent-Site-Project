@@ -3,7 +3,7 @@
         <div class="col-sm-4">
         </div>
         <div class="col-sm-4">
-            <form class="form-horizontal" action='<?php echo URL ?>register/registerUser' method="POST">
+            <form id="registrationForm" class="form-horizontal" action='<?php echo URL ?>register/registerUser' method="POST">
                 <fieldset>
                     <br />
                     <div id="legend">
@@ -92,7 +92,7 @@
                     <div class="form-group">
                         <!-- Create account button -->
                         <div class="controls">
-                            <button class="btn btn-primary center-block">Create your GatorRent account</button>
+                            <button id="submitForm" class="btn btn-primary center-block">Create your GatorRent account</button>
                         </div>
                     </div>
                 </fieldset>
@@ -103,3 +103,46 @@
         </div>
     </div>
 </div>
+
+<!-- jQuery -->
+<script type="text/javascript">
+    $(function () {
+        var storedForm = {};
+
+        if (sessionStorage.getItem('storedForm')) {
+            storedForm = $.parseJSON(sessionStorage.getItem('storedForm'));
+            if (storedForm.firstName) {
+                $('#firstName').val(storedForm.firstName);
+            }
+            if (storedForm.lastName) {
+                $('#lastName').val(storedForm.lastName);
+            }
+            if (storedForm.userType) {
+                $('#userType').val(storedForm.userType);
+            }
+            if (storedForm.email) {
+                $('#email').val(storedForm.email);
+            }
+        }
+
+        $('#firstName').on('change paste keyup', function () {
+            storedForm.firstName = $(this).val();
+        });
+        $('#lastName').on('change paste keyup', function () {
+            storedForm.lastName = $(this).val();
+        });
+        $('#userType').on('change', function () {
+            storedForm.userType = $(this).val();
+        });
+        $('#email').on('change paste keyup', function () {
+            storedForm.email = $(this).val();
+        });
+
+        $('#submitForm').on('click submit', function (e) {
+            e.preventDefault();
+            var parsedForm = JSON.stringify(storedForm);
+            sessionStorage.setItem('storedForm', parsedForm);
+            $('#registrationForm').submit();
+        })
+    });
+</script>

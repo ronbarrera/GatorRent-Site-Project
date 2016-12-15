@@ -1,27 +1,19 @@
 <?php
 	class Register extends Controller
 	{
-		// Class globals for storing filled registration fields and validation errors
-
 		/**
 		 * PAGE: Index
 		 * Handles main registration page
 		 */
-		public function index()
+		public function index($errId=NULL)
 		{
-			session_id('register');
-			session_start();
-			if (isset($_SESSION['registration'])) {
-				$currentForm = $_SESSION['registration'];
-			} else {
-				$currentForm = array();
+			$formErrors = array();
+			if (!empty($errId)) {
+				session_id($errId);
+				session_start();
+				$formErrors = $_SESSION['formErrors'];
+				session_destroy();
 			}
-			if (isset($_SESSION['errors'])) {
-				$formErrors = $_SESSION['errors'];
-			} else {
-				$formErrors = array();
-			}
-			session_write_close();
 			require APP . 'view/_templates/header.php';
 			require APP . 'view/register/index.php';
 			require APP . 'view/_templates/footer.php';
@@ -33,9 +25,6 @@
 		 */
 		public function success()
 		{
-			session_id('register');
-			session_start();
-			session_destroy();
 			require APP . 'view/_templates/header.php';
 			require APP . 'view/register/success.php';
 			require APP . 'view/_templates/footer.php';
@@ -47,8 +36,6 @@
 		 */
 		public function registerUser()
 		{
-			session_id('register');
-			session_start();
 			$registration = array(
 				'userType' => $_POST['userType'],
 				'firstName' => $_POST['firstName'],
@@ -66,18 +53,18 @@
 
 			$result = $this->registerModel->register($registration);
 			if (!empty($result)) {
-				// Store current registration fields and validation errors
-				$_SESSION['registration'] = $registration;
-				$_SESSION['errors'] = $result;
+				// Store validation errors
+				$errId = 'err-' . rand();
+				session_id($errId);
+				session_start();
+				$_SESSION['formErrors'] = $result;
 				session_write_close();
 
 				// Redirect to registration page to display validation errors
-				header('location: ' . URL . 'register');
+				header('location: ' . URL . 'register/index/' . $errId);
 			} else {
-				// Clear any stored registration fields and errors
-				$_SESSION['registration'] = array();
-				$_SESSION['errors'] = array();
-				session_write_close();
+				// Clear validation errors
+				$formErrors = array();
 
 				// Redirect to registration success page
 				header('location: ' . URL . 'register/success');
