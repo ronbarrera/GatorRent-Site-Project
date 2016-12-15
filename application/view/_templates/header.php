@@ -41,7 +41,7 @@
     <body>
         <div class="container">
             <div class="row text-center">
-                <h5><strong>"SFSU/FAU/Fulda Software Engineering Project, Fall 2016.  For Demonstration Only"</strong></h5>
+                <h5><strong>SFSU/FAU/Fulda Software Engineering Project, Fall 2016.  For Demonstration Only</strong></h5>
             </div>
         </div>
         <nav class="navbar navbar-inverse navbar-static-top">
