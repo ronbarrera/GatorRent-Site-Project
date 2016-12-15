@@ -31,6 +31,7 @@ class Home extends Controller
     {
         $search_options = $this->model->getSearchOptions();
         $location = "home";
+        $recentListings = $this->model->getRecentListings();
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/index.php';
         require APP . 'view/_templates/footer.php';
@@ -83,10 +84,10 @@ class Home extends Controller
         require APP . 'view/_templates/footer.php';
     }
 
-    public function singleview()
+    public function singleview($apartmentId)
     {
         $search_options = $this->model->getSearchOptions();
-        $apartment = $this->model->getSingleApartmentInfo($_POST['singleapartmentid']);
+        $apartment = $this->model->getSingleApartmentInfo($apartmentId);
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/singleview.php';
         require APP . 'view/_templates/footer.php';
