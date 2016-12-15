@@ -109,6 +109,7 @@
     $(function () {
         var storedForm = {};
 
+        // Check for stored registration form data and restore
         if (sessionStorage.getItem('storedForm')) {
             storedForm = $.parseJSON(sessionStorage.getItem('storedForm'));
             if (storedForm.firstName) {
@@ -125,6 +126,7 @@
             }
         }
 
+        // Listen for changes on certain fields and store them
         $('#firstName').on('change paste keyup', function () {
             storedForm.firstName = $(this).val();
         });
@@ -138,6 +140,7 @@
             storedForm.email = $(this).val();
         });
 
+        // Store registration form data in session storage and submit form
         $('#submitForm').on('click submit', function (e) {
             e.preventDefault();
             var parsedForm = JSON.stringify(storedForm);
