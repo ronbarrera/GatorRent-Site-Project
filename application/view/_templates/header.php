@@ -102,8 +102,8 @@
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-primary btn-block">Sign in</button>
                                                 </div>
-                                                <div class="form-group">
-                                                    <a href="<?php echo URL; ?>home/signup">Not a member? Sign Up</a></li>
+                                                <div class="form-group text-center">
+                                                    Not a member? <a href="<?php echo URL; ?>register"><span style="color: #337ab7;">Sign Up</span></a>
                                                 </div>
                                             </form>
                                         </div>
