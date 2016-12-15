@@ -25,19 +25,21 @@
 
 		public function register()
 		{
-			$user_type = $_POST['user_type'];
-			$first_name = $_POST['first_name'];
-			$last_name = $_POST['last_name'];
+			$userType = $_POST['user_type'];
+			$firstName = $_POST['first_name'];
+			$lastName = $_POST['last_name'];
 			$email = $_POST['email'];
 			$password = $_POST['password'];
+			$passwordVerify = $_POST['password_verify'];
+			$tosComply = $_POST['toscomply'];
 
-			if ($user_type == 'Renter') {
-				$renter_id = $_POST['renter_id'];
+			if ($userType == 'Renter') {
+				$renterId = $_POST['renter_id'];
 			} else {
-				$renter_id = NULL;
+				$renterId = NULL;
 			}
 
-			$this->userModel->register($user_type, $first_name, $last_name, $email, $password, $renter_id);
+			$errors = $this->userModel->register($userType, $firstName, $lastName, $email, $password, $passwordVerify, $renterId, $tosComply);
 
 			header('location: ' . URL . 'home');
 		}
