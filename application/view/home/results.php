@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <h1 style="text-align: center;">Available Apartments</h1>
                     <p style="text-align: center;"><?php echo count($results) ?> results for "<?php echo $_POST['search_query'] ?>"</p>
-                    <hr style="height: 10px; border: 0; box-shadow: 0 10px 10px -10px #8c8b8b inset;"/>          
+                    <hr style="height: 10px; border: 0; box-shadow: 0 10px 10px -10px #8c8b8b inset;"/>
                 </div>
             </div>
             <div class="row">
@@ -33,7 +33,7 @@
                                         </h4>
                                     </a>
                                     <h4 class="media-heading" style="color:#03a1d1;">
-                                        $<?php if (isset($result->price)) {echo htmlspecialchars($result->price, ENT_QUOTES, "UTF-8");}?> 
+                                        $<?php if (isset($result->price)) {echo htmlspecialchars($result->price, ENT_QUOTES, "UTF-8");}?>
                                         <small class="pull-right" style="color: black;">
                                             <?php if (isset($result->apartment_id)) {echo htmlspecialchars($result->zipcode, ENT_QUOTES, "UTF-8");}?>
                                         </small>

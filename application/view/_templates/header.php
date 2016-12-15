@@ -14,6 +14,7 @@
         <link href="<?php echo URL; ?>css/style.css" rel="stylesheet">
         <link href="<?php echo URL; ?>css/navbarstyle.css" rel="stylesheet">
         <link href="<?php echo URL; ?>css/resultstyle.css" rel="stylesheet">
+        <link href="<?php echo URL; ?>css/fileinput.min.css" rel="stylesheet">
 
         <!-- Bootstrap -->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -25,6 +26,7 @@
 
         <!-- search bar function -->
         <script src="<?php echo URL; ?>js/searchbar.js"></script>
+        <script src="<?php echo URL; ?>js/fileinput.min.js"></script>
 
         <!-- Google Analytics tracking -->
         <script>
@@ -50,7 +52,6 @@
                     </button>
                     <a class="navbar-brand" href="<?php echo URL; ?>">GatorRent</a>
                 </div>
-
                 <div class="col-sm-5">
                     <form class="navbar-form" action="<?php echo URL; ?>home/search" method="POST">
                         <div class="input-group" style="width: 100%">
@@ -79,6 +80,7 @@
                         <li class="<?php echo(($location == 'home') ? 'active' : '') ?>" ><a href="<?php echo URL; ?>">Home</a></li>
                         <li class="<?php echo(($location == 'aboutus') ? 'active' : '') ?>"><a href="<?php echo URL; ?>home/aboutus">About Us</a></li>
                         <li class="<?php echo(($location == 'create_listing') ? 'active' : '') ?>"><a href="<?php echo URL; ?>user/createlisting">Create Listing</a></li>
+                        <!-- Login drop-down menu -->
                         <li class="dropdown" id="menuLogin">
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login<span class="caret"></span></a>
                             <ul class="dropdown-menu" id="dropdown-login">
@@ -97,17 +99,19 @@
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-primary btn-block">Sign in</button>
                                                 </div>
-                                                <div class="form-group">
-                                                    <a href="<?php echo URL; ?>home/signup">Not a member? Sign Up</a></li>
-                                                </div>
                                             </form>
+                                            <!-- Ask user to sign up if user does not have an account. -->
+                                            <div class="form-group text-center">
+                                                Not a member? <a href="<?php echo URL; ?>home/signup"><span style="color: #337ab7;">Sign Up</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </li>
-
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>
         </nav>
+    </body>
+</html>
