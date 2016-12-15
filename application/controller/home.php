@@ -46,14 +46,6 @@ class Home extends Controller
         require APP . 'view/_templates/footer.php';
     }
 
-    public function signup()
-    {
-        $search_options = $this->model->getSearchOptions();
-        $location = "signup";
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/home/signup.php';
-        require APP . 'view/_templates/footer.php';
-    }
     /**
      * PAGE: search
      * This method handles getting listings from the database that match the search criteria
@@ -74,13 +66,6 @@ class Home extends Controller
 
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/results.php';
-        require APP . 'view/_templates/footer.php';
-    }
-
-    public function viewlisting()
-    {
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/home/view_listing.php';
         require APP . 'view/_templates/footer.php';
     }
 

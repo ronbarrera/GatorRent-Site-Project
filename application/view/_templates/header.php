@@ -102,7 +102,7 @@
                                             </form>
                                             <!-- Ask user to sign up if user does not have an account. -->
                                             <div class="form-group text-center">
-                                                Not a member? <a href="<?php echo URL; ?>home/signup"><span style="color: #337ab7;">Sign Up</a>
+                                                Not a member? <a href="<?php echo URL; ?>register"><span style="color: #337ab7;">Sign Up</a>
                                             </div>
                                         </div>
                                     </div>
