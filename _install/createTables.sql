@@ -16,7 +16,6 @@ CREATE TABLE IF NOT EXISTS `f16g13`.`Lessors`(
    `firstName` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
    `lastName` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
    `email` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-   `status` tinyint(1),
    `createdDate` datetime DEFAULT CURRENT_TIMESTAMP COLLATE utf8_unicode_ci,
    `modifiedDate` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COLLATE utf8_unicode_ci,
    PRIMARY KEY (`lessorId`),
