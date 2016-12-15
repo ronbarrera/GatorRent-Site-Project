@@ -45,7 +45,7 @@ class Home extends Controller
         require APP . 'view/home/aboutus.php';
         require APP . 'view/_templates/footer.php';
     }
-    
+
     public function signup()
     {
         $search_options = $this->model->getSearchOptions();
@@ -92,7 +92,7 @@ class Home extends Controller
         require APP . 'view/home/singleview.php';
         require APP . 'view/_templates/footer.php';
     }
-    
+
     public function conditionsofuse()
     {
         $search_options = $this->model->getSearchOptions();
@@ -101,7 +101,7 @@ class Home extends Controller
         require APP . 'view/home/condition_of_use.php';
         require APP . 'view/_templates/footer.php';
     }
-    
+
     public function privacynotice()
     {
         $search_options = $this->model->getSearchOptions();
@@ -110,7 +110,7 @@ class Home extends Controller
         require APP . 'view/home/privacy_notice.php';
         require APP . 'view/_templates/footer.php';
     }
-    
+
     public function contactus()
     {
         $search_options = $this->model->getSearchOptions();

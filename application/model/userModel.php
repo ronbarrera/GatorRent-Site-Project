@@ -10,18 +10,8 @@ class UserModel {
         }
     }
 
-    public function register($userType=NULL, $firstName=NULL, $lastName=NULL, $email=NULL, $password=NULL, $passwordVerify=NULL, $renterId=NULL, $tosComply=NULL) {
-        // Create a registration key-value array for validation
-        $registration = array(
-            'userType' => $userType,
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'email' => $email,
-            'password' => $password,
-            'passwordVerify' => $passwordVerify,
-            'renterId' => $renterId,
-            'tosComply' => $tosComply
-        );
+    public function register($registration) {
+        // Validate registration and store any errors
         $errors = $this->_validateRegistration($registration);
 
         // If registration is invalid, return errors to prompt user
@@ -31,28 +21,28 @@ class UserModel {
 
         // Query builder for adding new user to database
         $sql = "INSERT INTO ";
-        if ($userType == 'Renter') {
+        if ($registration['userType'] == 'Renter') {
             $sql .= 'Renters (renter_id, ';
-        } else if ($userType == 'Lessor') {
+        } else if ($registration['userType'] == 'Lessor') {
             $sql .= 'Lessors (';
         }
         $sql .= "first_name, last_name, email, password) VALUES (";
-        if ($userType == 'Renter') {
+        if ($registration['userType'] == 'Renter') {
             $sql .= ':renter_id, ';
         }
         $sql .= ":first_name, :last_name, :email, :password)";
 
         $query = $this->db->prepare($sql);
 
-        $password = hash('sha256', $password);
+        $password = hash('sha256', $registration['password']);
 
         $parameters = array();
-        if ($userType == 'Renter') {
-            $parameters[':renter_id'] = $renterId;
+        if ($registration['userType'] == 'Renter') {
+            $parameters[':renter_id'] = $registration['renterId'];
         }
-        $parameters[':first_name'] = $firstName;
-        $parameters[':last_name'] = $lastName;
-        $parameters[':email'] = $email;
+        $parameters[':first_name'] = $registration['firstName'];
+        $parameters[':last_name'] = $registration['lastName'];
+        $parameters[':email'] = $registration['email'];
         $parameters[':password'] = $password;
 
         // DEBUG
@@ -102,7 +92,7 @@ class UserModel {
         // firstName
         if (is_null($registration['firstName']) || $registration['firstName'] === '') {
             $errors['firstName'] = 'Please enter your first name.';
-        } else if (preg_match('/[- A-Za-z]/', $registration['firstName'])) {
+        } else if (!preg_match('/^[- A-Za-z]+$/', $registration['firstName'])) {
             $errors['firstName'] = 'First name may only contain letters, dashes (-), and spaces';
         } else if (strlen($registration['firstName']) > 20) {
             $errors['firstName'] = 'First name may be no longer than 20 characters.';
@@ -111,7 +101,7 @@ class UserModel {
         // lastName
         if (is_null($registration['lastName']) || $registration['lastName'] === '') {
             $errors['lastName'] = 'Please enter your last name';
-        } else if (preg_match('/[- A-Za-z]/', $registration['lastName'])) {
+        } else if (!preg_match('/^[- A-Za-z]+$/', $registration['lastName'])) {
             $errors['lastName'] = 'Last name may only contain letters, dashes (-), and spaces';
         } else if (strlen($registration['lastName']) > 20) {
             $errors['lastName'] = 'Last name may be no longer than 20 characters.';
@@ -120,7 +110,7 @@ class UserModel {
         // email
         if (is_null($registration['email']) || $registration['email'] === '') {
             $errors['email'] = 'Please enter your email address.';
-        } else if (filter_var($registration['email'], FILTER_VALIDATE_EMAIL)) {
+        } else if (!filter_var($registration['email'], FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'Please enter a valid email.';
         } else if ($registration['userType'] === 'Renter' && substr($registration['email'], -13) !== 'mail.sfsu.edu') {
             $errors['email'] = 'Email must be a valid "mail.sfsu.edu" email.';
@@ -148,7 +138,7 @@ class UserModel {
         if ($registration['userType'] === 'Renter') {
             if (is_null($registration['renterId']) || $registration['renterId'] === '') {
                 $errors['renterId'] = 'Student ID must be provided.';
-            } else if (preg_match('/[0-9]/', $registration['renterId'])) {
+            } else if (!ctype_digit($registration['renterId'])) {
                 $errors['renterId'] = 'Student ID may consist of numbers only.';
             } else if (strlen($registration['renterId']) !== 9){
                 $errors['renterId'] = 'Student ID must be 9 digits long.';
@@ -156,7 +146,7 @@ class UserModel {
         }
 
         // tosComply
-        if ($registration['tosComply'] !== true) {
+        if ($registration['tosComply'] !== 'on') {
             $errors['tosComply'] = 'Please agree to the Conditions of Use and Privacy Notice.';
         }
 
