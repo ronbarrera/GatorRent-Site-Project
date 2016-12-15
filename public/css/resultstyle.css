@@ -77,7 +77,6 @@ a {
     }
 }
 
-
 .img-thumbnail-listing {
     display: inline-block;
     padding: 4px;
@@ -88,3 +87,10 @@ a {
     transition: all .2s ease-in-out;
 }
 
+.media-title{
+    display:inline-block;
+    width:300px;
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+}

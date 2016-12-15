@@ -72,7 +72,7 @@ class UserModel {
             header("Location:" . URL . "home/index", true, 401);
             exit();
         } else {
-            // Creates a session to store the users ID, and make them always log in upon visiting the site 
+            // Creates a session to store the users ID, and make them always log in upon visiting the site
             $_SESSION['accountType'] = $accountType;
             $_SESSION['email'] = $result->email;
             $_SESSION['loggedIn'] = true;

@@ -26,9 +26,24 @@
         <!-- search bar function -->
         <script src="<?php echo URL; ?>js/searchbar.js"></script>
 
+        <!-- Google Analytics tracking -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+            ga('create', 'UA-88746021-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
     </head>
     <body>
+        <div class="container">
+            <div class="row text-center">
+                <h5><strong>SFSU/FAU/Fulda Software Engineering Project, Fall 2016.  For Demonstration Only</strong></h5>
+            </div>
+        </div>
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -87,8 +102,8 @@
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-primary btn-block">Sign in</button>
                                                 </div>
-                                                <div class="form-group">
-                                                    <a href="<?php echo URL; ?>home/signup">Not a member? Sign Up</a></li>
+                                                <div class="form-group text-center">
+                                                    Not a member? <a href="<?php echo URL; ?>register"><span style="color: #337ab7;">Sign Up</span></a>
                                                 </div>
                                             </form>
                                         </div>
