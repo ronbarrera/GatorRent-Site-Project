@@ -68,34 +68,25 @@ class UserModel {
         //If result is blank, then no match is found.
         if (!$result) {
             //If login fails, we redirect to home and exit() so php does not keep executing.
-            $_SESSION['loggedIn'] = false;
-            header("Location:" . URL . "home/index", true, 401);
+            $session = array(
+                'loggedIn' => false,
+                'loginError' => 'Email and password do not match.'
+            );
+            setcookie('session', json_encode($session), 0, '/');
+            $_COOKIE['session'] = json_encode($session);
+            header("location:" . URL . "home/login");
             exit();
         } else {
             // Creates a session to store the users ID, and make them always log in upon visiting the site
-            $_SESSION['accountType'] = $accountType;
-            $_SESSION['email'] = $result->email;
-            $_SESSION['loggedIn'] = true;
-            // start redirect to page user was at previously
-            echo "<meta http-equiv=\"refresh\" content=\"5;url=" . $_SERVER['HTTP_REFERER'] . "\"/>";
-            echo "Successfully logged in!";
+            $session = array(
+                'loggedIn' => true,
+                'accountType' => $accountType,
+                'email' => $result->email
+            );
+            setcookie('session', json_encode($session), 0, '/');
+            $_COOKIE['session'] = json_encode($session);
+            header("location:" . URL . "home");
         }
-    }
-
-    public function logout() {
-        // code obtained from : http://php.net/manual/en/function.session-destroy.php
-        // Unset all of the session variables.
-        $_SESSION = array();
-
-        // If it's desired to kill the session, also delete the session cookie.
-        // Note: This will destroy the session, and not just the session data!
-        if (ini_get("session.use_cookies")) {
-            $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
-        }
-
-        // Destroy the session.
-        session_destroy();
     }
 
 }
