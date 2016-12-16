@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+    if (!isset($_COOKIE['session'])) {
+        $session = array(
+            'loggedIn' => false
+        );
+        setcookie('session', json_encode($session), 0, '/');
+        $_COOKIE['session'] = json_encode($session);
+    }
+?>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -85,33 +94,50 @@
                         <li class="<?php echo(($location == 'aboutus') ? 'active' : '') ?>"><a href="<?php echo URL; ?>home/aboutus">About Us</a></li>
                         <li class="<?php echo(($location == 'create_listing') ? 'active' : '') ?>"><a href="<?php echo URL; ?>user/createlisting">Create Listing</a></li>
                         <li class="dropdown" id="menuLogin">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login<span class="caret"></span></a>
-                            <ul class="dropdown-menu" id="dropdown-login">
-                                <li>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <form class="form" role="form" method="post" action="<?php echo URL; ?>user/login" accept-charset="UTF-8" id="login-nav">
-                                                <div class="form-group">
-                                                    <label class="sr-only" for="email">Email address</label>
-                                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email address" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="sr-only" for="password">Password</label>
-                                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                                                </div>
-                                                <div class="form-group text-center">
-                                                    Not a member? <a href="<?php echo URL; ?>register"><span style="color: #337ab7;">Sign Up</span></a>
-                                                </div>
-                                            </form>
+                            <?php
+                                $cookieData = json_decode($_COOKIE['session'], true);
+                                if ($cookieData['loggedIn'] === true) {
+                            ?>
+                                <!-- Logged in state -->
+                                <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin"><?php echo $cookieData['email']; ?><span class="caret"></span></a>
+                                <ul class="dropdown-menu" id="dropdown-login">
+                                    <li>
+                                        <div class="row">
+                                            <div class="form-group text-center">
+                                                <a href="<?php echo URL; ?>user/logout"><span style="color: #337ab7;">Logout</span></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            </ul>
+                                    </li>
+                                </ul>
+                            <?php } else { ?>
+                                <!-- Logged out state -->
+                                <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login<span class="caret"></span></a>
+                                <ul class="dropdown-menu" id="dropdown-login">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <form class="form" role="form" method="post" action="<?php echo URL; ?>user/login" accept-charset="UTF-8" id="login-nav">
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="email">Email address</label>
+                                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email address" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="password">Password</label>
+                                                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                                    </div>
+                                                    <div class="form-group text-center">
+                                                        Not a member? <a href="<?php echo URL; ?>register"><span style="color: #337ab7;">Sign Up</span></a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            <?php } ?>
                         </li>
-
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>

@@ -22,5 +22,13 @@
 
 			$this->userModel->login($email, $password);
 		}
+
+		public function logout() {
+			$session = array(
+				'loggedIn' => false
+			);
+			setcookie('session', json_encode($session), 0, '/');
+			header('location: ' . URL . 'home');
+	    }
 	}
 ?>
