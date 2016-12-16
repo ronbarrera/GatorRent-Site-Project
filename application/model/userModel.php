@@ -57,10 +57,10 @@ class UserModel {
             $query->bindParam(':password', $password1);
             $query->execute();
             $result = $query->fetch();
-            //if accountType = 0 then it is Lessors
-            //if accountType = 1 then it is Renters
+            //if $i = 0 then it is Lessors
+            //if $i = 1 then it is Renters
             if ($result) {
-                $accountType = $i;
+                $accountType = ($i === 0) ? 'Lessor' : 'Renter';
                 break;
             }
         }
