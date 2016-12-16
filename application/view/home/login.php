@@ -36,6 +36,9 @@
 							<button id="submitForm" class="btn btn-primary center-block">Login</button>
 						</div>
 					</div>
+					<div class="form-group text-center">
+						Not a member? <a href="<?php echo URL; ?>register"><span style="color: #337ab7;">Sign Up</span></a>
+					</div>
 				</fieldset>
 			</form>
 		</div>
