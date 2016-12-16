@@ -8,8 +8,11 @@
 					<div id="legend">
 						<legend class="">Login</legend>
 					</div>
-					<?php if (!empty($_SESSION['loginError'])) { ?>
-						<span style="color:red"><?php echo $_SESSION['loginError']; ?></span>
+					<?php
+						$cookieData = json_decode($_COOKIE['session'], true);
+						if (isset($cookieData['loginError'])) {
+					?>
+						<span style="color:red"><?php echo $cookieData['loginError']; ?></span>
 						<br />
 					<?php } ?>
 					<div class="form-group">
