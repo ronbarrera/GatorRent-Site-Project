@@ -1,6 +1,5 @@
-
 <?php
-    
+
 	class Listing extends Controller
     {    
         /*
@@ -22,7 +21,7 @@
             
             $this->listModel->create($info);        
 
+		    header('location: ' . URL . 'user/createlisting');
         }      
 
 }
-    
