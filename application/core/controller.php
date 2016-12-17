@@ -15,7 +15,7 @@ class Controller {
     public $model = null;
     public $userModel = null;
     public $registerModel = null;
-
+    public $listMode = null;
     /**
      * Whenever controller is created, open a database connection too and load "the model".
      */
@@ -47,10 +47,12 @@ class Controller {
         require APP . 'model/model.php';
         require APP . 'model/userModel.php';
         require APP . 'model/registerModel.php';
+        require APP . 'model/listModel.php';
         // create new "model" (and pass the database connection)
         $this->model = new Model($this->db);
         $this->userModel = new UserModel($this->db);
         $this->registerModel = new RegisterModel($this->db);
+        $this->listModel = new ListModel($this->db);
     }
 
 }
