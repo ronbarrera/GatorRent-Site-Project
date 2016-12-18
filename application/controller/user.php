@@ -18,6 +18,7 @@
 				exit();
 			}
 			$search_options = $this->model->getSearchOptions();
+			$currentListings = $this->model->getApartmentsByUser($session['id']);
 			$location = 'createlisting';
 			$editing = false;
 
@@ -28,6 +29,13 @@
 
 		public function editlisting($apartmentId=NULL)
 		{
+			$session = json_decode($_COOKIE['session'], true);
+			if ($session['loggedIn'] === false) {
+				$session['loginError'] = 'You must be logged in to do that!';
+				setcookie('session', json_encode($session), 0, '/');
+				header('location: ' . URL . 'home/login');
+				exit();
+			}
 			if (empty($apartmentId) || !is_numeric($apartmentId)) {
 				// no apartmentId - go to create listing page instead
 				$editing = false;
@@ -43,8 +51,11 @@
 			}
 			// getSingleApartmentInfo returns an array, use the first entry
 			$listingInfo= $listingInfo[0];
+			$location = 'createlisting';
 			$editing = true;
 
+			$search_options = $this->model->getSearchOptions();
+			$currentListings = $this->model->getApartmentsByUser($session['id']);
 			require APP . 'view/_templates/header.php';
 			require APP . 'view/user/create_listing.php';
 			require APP . 'view/_templates/footer.php';

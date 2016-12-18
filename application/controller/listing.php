@@ -45,4 +45,15 @@
 
             header('location: ' . URL . 'user/createlisting');
         }
+
+        /*
+         * Action: delete
+         * Handles deleting a listing
+         */
+        public function delete($apartmentId)
+        {
+            $this->listModel->delete($apartmentId);
+
+            header('location: ' . URL . 'user/createlisting');
+        }
     }

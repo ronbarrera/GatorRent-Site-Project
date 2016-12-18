@@ -80,8 +80,13 @@ class UserModel {
             $session = array(
                 'loggedIn' => true,
                 'accountType' => $accountType,
-                'email' => $result->email
+                'email' => $result->email,
             );
+            if ($accountType === 'Renter') {
+                $session['id'] = $result->renter_id;
+            } else if ($accountType === 'Lessor') {
+                $session['id'] = $result->lessor_id;
+            }
             setcookie('session', json_encode($session), 0, '/');
             header("location:" . URL . "home");
         }

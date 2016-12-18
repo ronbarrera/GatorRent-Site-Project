@@ -46,6 +46,16 @@ class ListModel{
         $query->execute($parameters);
     }
 
+    public function delete($apartmentId)
+    {
+        $sql = "DELETE FROM Apartments WHERE apartment_id = :apartment_id";
+        $query = $this->db->prepare($sql);
+
+        $parameters = array(':apartment_id' => $apartmentId);
+
+        $query->execute($parameters);
+    }
+
     private function _validateListing($info)
     {
         $errors = array();

@@ -89,9 +89,22 @@ class Model
      */
      public function getSingleApartmentInfo($apartment_id)
     {
-        $sql = 'SELECT * FROM Apartments WHERE apartment_id = '.$apartment_id;
+        $sql = 'SELECT * FROM Apartments WHERE apartment_id = :apartment_id;';
         $query = $this->db->prepare($sql);
-        $query->execute();
+        $parameters = array(':apartment_id' => $apartment_id);
+        $query->execute($parameters);
+        return $query->fetchAll();
+    }
+
+    /**
+     * @return all apartments listed by a given lessor
+     */
+    public function getApartmentsByUser($lessorId)
+    {
+        $sql = 'SELECT * FROM Apartments WHERE lessor_id = :lessor_id';
+        $query = $this->db->prepare($sql);
+        $parameters = array(':lessor_id' => $lessorId);
+        $query->execute($parameters);
         return $query->fetchAll();
     }
 
