@@ -19,35 +19,39 @@
                     </div>
                     <!-- Fields to add properties of the apartment; title, price, room, address, etc. -->
                     <div class="col-sm-5 text-left">
-                        <h1>Create a Listing</h1>
+                        <?php if ($editing === true) { ?>
+                            <h1>Edit Listing</h1>
+                        <?php } else { ?>
+                            <h1>Create a Listing</h1>
+                        <?php } ?>
                         <hr>
-                        <form class="form-horizontal" action='<?php echo URL ?>listing/create' method="POST">
-                            <!-- Apartment' title -->
+                        <form class="form-horizontal" action="<?php if ($editing === true) { echo '' . URL . 'listing/update/' . $apartmentId; } else { echo '' . URL . 'listing/create'; } ?>" method="POST">
+                            <!-- Apartment title -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Title*</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="title" id="title" type="text" value="">
+                                    <input class="form-control" name="title" id="title" type="text" value="<?php if ($editing === true) { echo $listingInfo->title; } ?>">
                                 </div>
                             </div>
                             <!-- Apartment price -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Price*:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control" name="price" id="price" type="number" value="">
+                                    <input class="form-control" name="price" id="price" type="number" value="<?php if ($editing === true) { echo $listingInfo->price; } ?>">
                                 </div>
                             </div>
                             <!-- Available rooms -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Rooms*:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control" name="rooms" id="rooms" type="number" value="">
+                                    <input class="form-control" name="rooms" id="rooms" type="number" value="<?php if ($editing === true) { echo $listingInfo->rooms; } ?>">
                                 </div>
                             </div>
                             <!-- Available bathroom -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Bathrooms*:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control" name="baths" id="baths" type="number" value="">
+                                    <input class="form-control" name="baths" id="baths" type="number" value="<?php if ($editing === true) { echo $listingInfo->baths; } ?>">
                                 </div>
                             </div>
                             <!--
@@ -62,21 +66,21 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Address*:</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" name="address" id="address" type="text" value="">
+                                    <input class="form-control" name="address" id="address" type="text" value="<?php if ($editing === true) { echo $listingInfo->street_address; } ?>">
                                 </div>
                             </div>
                             <!-- Apartment Zipcode -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">ZipCode*:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control" name="zipCode" id="zipCode" type="number" value="">
+                                    <input class="form-control" name="zipCode" id="zipCode" type="number" value="<?php if ($editing === true) { echo $listingInfo->zipcode; } ?>">
                                 </div>
                             </div>
                             <!-- Short description of the apartment -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Description:</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" rows="7" name="description" id="description"></textarea>
+                                    <textarea class="form-control" rows="7" name="description" id="description"><?php if ($editing === true) { echo $listingInfo->description; } ?></textarea>
                                 </div>
                             </div>
                             <hr>
@@ -97,7 +101,7 @@
                             <div class="footer">* Required field</div>
                             <hr>
                             <button type="button" class="btn btn-warning">cancel</button>
-                            <button type="submit" class="btn btn-primary">post</button>
+                            <button type="submit" class="btn btn-primary"><?php if ($editing === true) { echo 'update'; } else { echo 'post'; } ?></button>
                             <hr>
                         </form>
                     </div>

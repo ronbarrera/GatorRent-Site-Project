@@ -19,6 +19,31 @@
 			}
 			$search_options = $this->model->getSearchOptions();
 			$location = 'createlisting';
+			$editing = false;
+
+			require APP . 'view/_templates/header.php';
+			require APP . 'view/user/create_listing.php';
+			require APP . 'view/_templates/footer.php';
+		}
+
+		public function editlisting($apartmentId=NULL)
+		{
+			if (empty($apartmentId) || !is_numeric($apartmentId)) {
+				// no apartmentId - go to create listing page instead
+				$editing = false;
+				header('location: ' . URL . 'user/createlisting');
+				exit();
+			}
+			$listingInfo = $this->model->getSingleApartmentInfo($apartmentId);
+			if (empty($listingInfo)) {
+				// no apartment info found, go to create listingInfo
+				$editing = false;
+				header('location: ' . URL . 'user/createlisting');
+				exit();
+			}
+			// getSingleApartmentInfo returns an array, use the first entry
+			$listingInfo= $listingInfo[0];
+			$editing = true;
 
 			require APP . 'view/_templates/header.php';
 			require APP . 'view/user/create_listing.php';

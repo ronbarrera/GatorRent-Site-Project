@@ -10,8 +10,8 @@ class ListModel{
         }
     }
 
-    public function create($info){
-
+    public function create($info)
+    {
         $sql = "INSERT INTO Apartments (title, street_address, zipcode, price, rooms, baths, description, picture_1) VALUES (:title, :street_address, :zipcode, :price, :rooms, :baths, :description, :picture_1)";
         $query = $this->db->prepare($sql);
 
@@ -24,12 +24,29 @@ class ListModel{
         $parameters[':baths'] = $info['baths'];
         $parameters[':description'] = $info['description'];
         $parameters[':picture_1'] = $info['picture_1'];
-        $query->execute($parameters);
 
+        $query->execute($parameters);
     }
 
+    public function update($info)
+    {
+        $sql = "UPDATE Apartments SET title = :title, street_address = :street_address, zipcode = :zipcode, price = :price, rooms = :rooms, baths = :baths, description = :description WHERE apartment_id = :apartment_id";
+        $query = $this->db->prepare($sql);
 
-    private function _validateCreate($info)
+        $parameters = array();
+        $parameters[':title'] = $info['title'];
+        $parameters[':street_address'] = $info['address'];
+        $parameters[':zipcode'] = $info['zipCode'];
+        $parameters[':price'] = $info['price'];
+        $parameters[':rooms'] = $info['rooms'];
+        $parameters[':baths'] = $info['baths'];
+        $parameters[':description'] = $info['description'];
+        $parameters[':apartment_id'] = $info['apartment_id'];
+
+        $query->execute($parameters);
+    }
+
+    private function _validateListing($info)
     {
         $errors = array();
 
