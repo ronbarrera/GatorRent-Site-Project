@@ -15,7 +15,7 @@ class Controller {
     public $model = null;
     public $userModel = null;
     public $registerModel = null;
-    public $listMode = null;
+    public $listModel = null;
     /**
      * Whenever controller is created, open a database connection too and load "the model".
      */
