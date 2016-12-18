@@ -15,39 +15,39 @@
                             <li><a href="#section2">Listing #1</a></li>
                             <li><a href="#section3">Listing #2</a></li>
                             <li><a href="#section3">Listing #3</a></li>
-                        </ul><br>               
+                        </ul><br>
                     </div>
                     <!-- Fields to add properties of the apartment; title, price, room, address, etc. -->
                     <div class="col-sm-5 text-left">
                         <h1>Create a Listing</h1>
                         <hr>
-                        <form class="form-horizontal" action='<?php echo URL ?>user/createlisting' method="POST">
+                        <form class="form-horizontal" action='<?php echo URL ?>listing/create' method="POST">
                             <!-- Apartment' title -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Title*</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="title" type="text" value="">
+                                    <input class="form-control" name="title" id="title" type="text" value="">
                                 </div>
                             </div>
                             <!-- Apartment price -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Price*:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control" id="price" type="number" value="">
+                                    <input class="form-control" name="price" id="price" type="number" value="">
                                 </div>
                             </div>
                             <!-- Available rooms -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Rooms*:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control" id="rooms" type="number" value="">
+                                    <input class="form-control" name="rooms" id="rooms" type="number" value="">
                                 </div>
                             </div>
                             <!-- Available bathroom -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Bathrooms*:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control" id="bathrooms" type="number" value="">
+                                    <input class="form-control" name="baths" id="baths" type="number" value="">
                                 </div>
                             </div>
                             <!--
@@ -62,22 +62,22 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Address*:</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="address" type="text" value="">
+                                    <input class="form-control" name="address" id="address" type="text" value="">
                                 </div>
                             </div>
                             <!-- Apartment Zipcode -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">ZipCode*:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control" id="zipCode" type="number" value="">
+                                    <input class="form-control" name="zipCode" id="zipCode" type="number" value="">
                                 </div>
                             </div>
                             <!-- Short description of the apartment -->
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Description:</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" rows="7" id="description"></textarea>
-                                </div>                             
+                                    <textarea class="form-control" rows="7" name="description" id="description"></textarea>
+                                </div>
                             </div>
                             <hr>
                             <!-- Select photos to uploads. Max photo amount 10. Allowed file types: jpg and png. -->
@@ -95,15 +95,15 @@
                                 </script>
                             </div>
                             <div class="footer">* Required field</div>
+                            <hr>
+                            <button type="button" class="btn btn-warning">cancel</button>
+                            <button type="submit" class="btn btn-primary">post</button>
+                            <hr>
                         </form>
                     </div>
                     <div class="col-sm-5 input-group">
                     </div>
                 </div>
-                <hr>
-                <button type="button" class="btn btn-warning">Cancel</button>
-                <button type="button" class="btn btn-primary">Post</button>
-                <hr>
             </div>
         </div>
     </div>
