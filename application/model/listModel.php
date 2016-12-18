@@ -10,9 +10,30 @@ class ListModel{
         }
     }
 
-    public function create($info){
+    public function create($info, $callback)
+    {
+        $sql = "INSERT INTO Apartments (lessor_id, title, street_address, zipcode, price, rooms, baths, description, picture_1) VALUES (:lessor_id, :title, :street_address, :zipcode, :price, :rooms, :baths, :description, :picture_1)";
+        $query = $this->db->prepare($sql);
 
-        $sql = "INSERT INTO Apartments (title, street_address, zipcode, price, rooms, baths, description, picture_1) VALUES (:title, :street_address, :zipcode, :price, :rooms, :baths, :description, :picture_1)";
+        $parameters = array();
+        $parameters[':lessor_id'] = $info['lessor_id'];
+        $parameters[':title'] = $info['title'];
+        $parameters[':street_address'] = $info['address'];
+        $parameters[':zipcode'] = $info['zipCode'];
+        $parameters[':price'] = $info['price'];
+        $parameters[':rooms'] = $info['rooms'];
+        $parameters[':baths'] = $info['baths'];
+        $parameters[':description'] = $info['description'];
+        $parameters[':picture_1'] = $info['picture_1'];
+
+        $query->execute($parameters);
+
+        $callback();
+    }
+
+    public function update($info)
+    {
+        $sql = "UPDATE Apartments SET title = :title, street_address = :street_address, zipcode = :zipcode, price = :price, rooms = :rooms, baths = :baths, description = :description WHERE apartment_id = :apartment_id";
         $query = $this->db->prepare($sql);
 
         $parameters = array();
@@ -23,13 +44,22 @@ class ListModel{
         $parameters[':rooms'] = $info['rooms'];
         $parameters[':baths'] = $info['baths'];
         $parameters[':description'] = $info['description'];
-        $parameters[':picture_1'] = $info['picture_1'];
-        $query->execute($parameters);
+        $parameters[':apartment_id'] = $info['apartment_id'];
 
+        $query->execute($parameters);
     }
 
+    public function delete($apartmentId)
+    {
+        $sql = "DELETE FROM Apartments WHERE apartment_id = :apartment_id";
+        $query = $this->db->prepare($sql);
 
-    private function _validateCreate($info)
+        $parameters = array(':apartment_id' => $apartmentId);
+
+        $query->execute($parameters);
+    }
+
+    private function _validateListing($info)
     {
         $errors = array();
 
