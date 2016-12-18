@@ -10,6 +10,13 @@
 
 		public function createlisting()
 		{
+			$session = json_decode($_COOKIE['session'], true);
+			if ($session['loggedIn'] === false) {
+				$session['loginError'] = 'You must be logged in to do that!';
+				setcookie('session', json_encode($session), 0, '/');
+				header('location: ' . URL . 'home/login');
+				exit();
+			}
 			$search_options = $this->model->getSearchOptions();
 			$location = 'createlisting';
 

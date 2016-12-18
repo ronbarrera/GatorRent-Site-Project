@@ -39,6 +39,7 @@ class Home extends Controller
 
     public function login()
     {
+        $session = json_decode($_COOKIE['session'], true);
         $search_options = $this->model->getSearchOptions();
         $location = "login";
         require APP . 'view/_templates/header.php';

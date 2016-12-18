@@ -5,7 +5,6 @@
             'loggedIn' => false
         );
         setcookie('session', json_encode($session), 0, '/');
-        $_COOKIE['session'] = json_encode($session);
     }
 ?>
 <html lang="en">
@@ -88,18 +87,18 @@
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <?php $cookieData = json_decode($_COOKIE['session'], true); ?>
+                <?php $session = json_decode($_COOKIE['session'], true); ?>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="<?php echo(($location == 'home') ? 'active' : '') ?>" ><a href="<?php echo URL; ?>">Home</a></li>
                         <li class="<?php echo(($location == 'aboutus') ? 'active' : '') ?>"><a href="<?php echo URL; ?>home/aboutus">About Us</a></li>
-                        <?php if ($cookieData['loggedIn'] === false || $cookieData['accountType'] === 'Lessor') { ?>
+                        <?php if ($session['loggedIn'] === false || $session['accountType'] === 'Lessor') { ?>
                             <li class="<?php echo(($location == 'createlisting') ? 'active' : '') ?>"><a href="<?php echo URL; ?>user/createlisting">Create Listing</a></li>
                         <?php } ?>
                         <li class="dropdown" id="menuLogin">
-                            <?php if ($cookieData['loggedIn'] === true) { ?>
+                            <?php if ($session['loggedIn'] === true) { ?>
                                 <!-- Logged in state -->
-                                <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin"><?php echo $cookieData['email']; ?><span class="caret"></span></a>
+                                <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin"><?php echo $session['email']; ?><span class="caret"></span></a>
                                 <ul class="dropdown-menu" id="dropdown-login">
                                     <li>
                                         <div class="row">

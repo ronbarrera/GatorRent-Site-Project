@@ -9,10 +9,9 @@
 						<legend class="">Login</legend>
 					</div>
 					<?php
-						$cookieData = json_decode($_COOKIE['session'], true);
-						if (isset($cookieData['loginError'])) {
+						if (isset($session['loginError'])) {
 					?>
-						<span style="color:red"><?php echo $cookieData['loginError']; ?></span>
+						<span style="color:red"><?php echo $session['loginError']; ?></span>
 						<br />
 					<?php } ?>
 					<div class="form-group">

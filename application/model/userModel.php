@@ -73,7 +73,6 @@ class UserModel {
                 'loginError' => 'Email and password do not match.'
             );
             setcookie('session', json_encode($session), 0, '/');
-            $_COOKIE['session'] = json_encode($session);
             header("location:" . URL . "home/login");
             exit();
         } else {
@@ -84,7 +83,6 @@ class UserModel {
                 'email' => $result->email
             );
             setcookie('session', json_encode($session), 0, '/');
-            $_COOKIE['session'] = json_encode($session);
             header("location:" . URL . "home");
         }
     }
