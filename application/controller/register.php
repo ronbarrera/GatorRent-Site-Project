@@ -1,13 +1,15 @@
 <?php
 
     class Register extends Controller
-    {   
+    {
    		/**
 		 * PAGE: Index
 		 * Handles main registration page
 		 */
 		public function index($errId=NULL)
 		{
+			$search_options = $this->model->getSearchOptions();
+
 			$formErrors = array();
 			if (!empty($errId)) {
 				session_id($errId);
@@ -26,6 +28,8 @@
 		 */
 		public function success()
 		{
+			$search_options = $this->model->getSearchOptions();
+
 			require APP . 'view/_templates/header.php';
 			require APP . 'view/register/success.php';
 			require APP . 'view/_templates/footer.php';

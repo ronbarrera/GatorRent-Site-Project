@@ -94,7 +94,7 @@
                         <li class="<?php echo(($location == 'home') ? 'active' : '') ?>" ><a href="<?php echo URL; ?>">Home</a></li>
                         <li class="<?php echo(($location == 'aboutus') ? 'active' : '') ?>"><a href="<?php echo URL; ?>home/aboutus">About Us</a></li>
                         <?php if ($cookieData['loggedIn'] === false || $cookieData['accountType'] === 'Lessor') { ?>
-                            <li class="<?php echo(($location == 'create_listing') ? 'active' : '') ?>"><a href="<?php echo URL; ?>user/createlisting">Create Listing</a></li>
+                            <li class="<?php echo(($location == 'createlisting') ? 'active' : '') ?>"><a href="<?php echo URL; ?>user/createlisting">Create Listing</a></li>
                         <?php } ?>
                         <li class="dropdown" id="menuLogin">
                             <?php if ($cookieData['loggedIn'] === true) { ?>
