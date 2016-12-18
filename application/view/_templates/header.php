@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
-    if (!isset($_COOKIE['session'])) {
+    if (isset($_COOKIE['session'])) {
+        $session = json_decode($_COOKIE['session'], true);
+    } else {
         $session = array(
             'loggedIn' => false
         );
@@ -87,7 +89,6 @@
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <?php $session = json_decode($_COOKIE['session'], true); ?>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="<?php echo(($location == 'home') ? 'active' : '') ?>" ><a href="<?php echo URL; ?>">Home</a></li>
