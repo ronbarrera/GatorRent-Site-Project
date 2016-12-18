@@ -15,7 +15,7 @@
                             <li><a href="#section2">Listing #1</a></li>
                             <li><a href="#section3">Listing #2</a></li>
                             <li><a href="#section3">Listing #3</a></li>
-                        </ul><br>               
+                        </ul><br>
                     </div>
                     <!-- Fields to add properties of the apartment; title, price, room, address, etc. -->
                     <div class="col-sm-5 text-left">
@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Bathrooms*:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control" name="bathrooms" id="bathrooms" type="number" value="">
+                                    <input class="form-control" name="baths" id="baths" type="number" value="">
                                 </div>
                             </div>
                             <!--
@@ -77,7 +77,7 @@
                                 <label class="col-sm-2 control-label">Description:</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" rows="7" name="description" id="description"></textarea>
-                                </div>                             
+                                </div>
                             </div>
                             <hr>
                             <!-- Select photos to uploads. Max photo amount 10. Allowed file types: jpg and png. -->
@@ -94,7 +94,7 @@
                                     });
                                 </script>
                             </div>
-                            <div class="footer">* Required field</div> 
+                            <div class="footer">* Required field</div>
                             <hr>
                             <button type="button" class="btn btn-warning">cancel</button>
                             <button type="submit" class="btn btn-primary">post</button>
