@@ -6,9 +6,10 @@
          * Action: create
          * Handles creating a listing
          */
-        public function create()
+        public function create($lessorId)
         {
             $info = array(
+                'lessor_id' => $lessorId,
                 'title' => $_POST['title'],
                 'address' => $_POST['address'],
                 'zipCode' => $_POST['zipCode'],
@@ -19,9 +20,10 @@
                 'picture_1' => "link"
             );
 
-            $this->listModel->create($info);
-
-            header('location: ' . URL . 'user/createlisting');
+            $this->listModel->create($info, function () {
+                // Called after listing is saved to database
+                header('location: ' . URL . 'user/createlisting');
+            });
         }
 
         /*

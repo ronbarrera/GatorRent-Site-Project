@@ -25,7 +25,7 @@
                             <h1>Create a Listing</h1>
                         <?php } ?>
                         <hr>
-                        <form class="form-horizontal" action="<?php if ($editing === true) { echo '' . URL . 'listing/update/' . $apartmentId; } else { echo '' . URL . 'listing/create'; } ?>" method="POST">
+                        <form class="form-horizontal" action="<?php if ($editing === true) { echo '' . URL . 'listing/update/' . $apartmentId; } else { echo '' . URL . 'listing/create/' . $session['id']; } ?>" method="POST">
                             <!-- Apartment title -->
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Title*</label>

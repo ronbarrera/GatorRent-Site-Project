@@ -10,12 +10,13 @@ class ListModel{
         }
     }
 
-    public function create($info)
+    public function create($info, $callback)
     {
-        $sql = "INSERT INTO Apartments (title, street_address, zipcode, price, rooms, baths, description, picture_1) VALUES (:title, :street_address, :zipcode, :price, :rooms, :baths, :description, :picture_1)";
+        $sql = "INSERT INTO Apartments (lessor_id, title, street_address, zipcode, price, rooms, baths, description, picture_1) VALUES (:lessor_id, :title, :street_address, :zipcode, :price, :rooms, :baths, :description, :picture_1)";
         $query = $this->db->prepare($sql);
 
         $parameters = array();
+        $parameters[':lessor_id'] = $info['lessor_id'];
         $parameters[':title'] = $info['title'];
         $parameters[':street_address'] = $info['address'];
         $parameters[':zipcode'] = $info['zipCode'];
@@ -26,6 +27,8 @@ class ListModel{
         $parameters[':picture_1'] = $info['picture_1'];
 
         $query->execute($parameters);
+
+        $callback();
     }
 
     public function update($info)

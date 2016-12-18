@@ -11,7 +11,7 @@
 		public function createlisting()
 		{
 			$session = json_decode($_COOKIE['session'], true);
-			if ($session['loggedIn'] === false || $session['userType'] !== 'Lessor') {
+			if ($session['loggedIn'] === false || $session['accountType'] !== 'Lessor') {
 				$session['loginError'] = 'You must be logged in to do that!';
 				setcookie('session', json_encode($session), 0, '/');
 				header('location: ' . URL . 'home/login');
@@ -30,7 +30,7 @@
 		public function editlisting($apartmentId=NULL)
 		{
 			$session = json_decode($_COOKIE['session'], true);
-			if ($session['loggedIn'] === false || $session['userType'] !== 'Lessor') {
+			if ($session['loggedIn'] === false || $session['accountType'] !== 'Lessor') {
 				$session['loginError'] = 'You must be logged in to do that!';
 				setcookie('session', json_encode($session), 0, '/');
 				header('location: ' . URL . 'home/login');
